@@ -52,15 +52,15 @@ document.getElementById("abrirPopUp").addEventListener("click", abrirPopup);
 document.getElementById("fecharPopUp").addEventListener("click", fecharPopup);
 
 /* Validação do login */
-document.getElementById("formLogin").addEventListener("submit", function(event) {
+document.getElementById("formLogin").addEventListener("submit", async function(event) {
     event.preventDefault();
 
     const email = document.getElementById("emailLogin").value;
     const senha = document.getElementById("senhaLogin").value;
 
-    const usuarioLogado = PostLogin(email, senha);
+    const usuarioLogado = await PostLogin(email, senha);
 
-    if (usuarioLogado != null) {
+     if (usuarioLogado !== undefined && usuarioLogado != null) {
         window.location.href = "../Pages/HomePage.html";
     } else {
         alert("Usuário não encontrado!");

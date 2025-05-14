@@ -18,7 +18,8 @@ export async function PostLogin(email, senha) {
         }
 
         const data = await resposta.json();
-        return new Usuario(data.id, data.nome, data.email, data.senha, data.imagem);
+
+        return new Usuario(data.id, data.nome, data.email, data.imagem);
 
     } catch (error) {
         console.error(error);
@@ -53,7 +54,7 @@ export async function GetUsuario(email) {
         }
 
         const data = await resposta.json();
-        return new Usuario(data.id, data.nome, data.email, data.senha, data.imagem);
+        return new Usuario(data.id, data.nome, data.email, data.imagem);
     } catch (error) {
         console.error(error);
         return null;
