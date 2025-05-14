@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login Page">
+    <meta name="author" content="Marco Aurélio Consoni Mazanti">
+    <meta name="keywords" content="Porta de entrada, Login, Cadastro">
+
+    <link rel="stylesheet" href="../CSS/LoginPage.css">
+
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="vbox boxAcesso">
+            <h1>Login Page</h1>
+            <form id="formLogin" method="post">
+                <div class="vbox">
+                    <label for="emailLogin">Email</label>
+                    <input type="email" id="emailLogin" name="email" placeholder="Digite seu email" required>
+                </div>
+                <div class="vbox">
+                    <label for="senhaLogin">Senha</label>
+                    <input type="password" id="senhaLogin" name="senha" placeholder="Digite sua senha" required>
+                </div>
+                <button type="submit">Entrar</button>
+            </form>
+            <hr style="width: 100%;">
+            <button onclick="abrirPopup()">Cadastre-se</button>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div id="popupOverlay" class="overlay">
+        <div class="popup">
+            <div class="vbox">
+                <h1>Cadastre-se</h1>
+                <form id="formCadastro" method="post">
+                    <div class="hbox">
+                        <div class="vbox">
+                            <input type="file" id="fotoUsuario" name="fotoUsuario" accept="image/*" style="opacity: 0; position: absolute;">
+                            <button onclick="document.getElementById('fotoUsuario').click()">Selecionar Arquivo</button>
+                            <div class="image-preview" id="image-preview">
+                                <p typeof="file" accept="image/*">Nenhuma imagem selecionada</p>
+                            </div>
+                        </div>
+
+                        <div class="vbox">
+                            <div class="vbox">
+                                <label for="nomeCadastro">Nome</label>
+                                <input type="text" id="nomeCadastro" name="nome" placeholder="Digite seu nome">
+                            </div>
+                            <div class="vbox">
+                                <label for="emailCadastro">Email</label>
+                                <input type="email" id="emailCadastro" name="email" placeholder="Digite seu email">
+                            </div>
+                            <div class="vbox">
+                                <label for="senhaCadastro">Senha</label>
+                                <input type="password" id="senhaCadastro" name="senha" placeholder="Digite sua senha">
+                            </div>
+                            <div class="vbox">
+                                <label for="confirmarSenhaCadastro">Confirmação de Senha</label>
+                                <input type="password" id="confirmarSenhaCadastro" name="confirmarSenhaCadastro" placeholder="Digite sua senha novamente">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hbox">
+                        <button type="button" onclick="fecharPopup()">Cancelar</button>
+                        <button type="submit">Criar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JavaScript/LoginPage.js"></script>
+</body>
+</html>
