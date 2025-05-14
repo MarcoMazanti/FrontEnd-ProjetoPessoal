@@ -8,7 +8,7 @@
     <meta name="author" content="Marco Aurélio Consoni Mazanti">
     <meta name="keywords" content="Porta de entrada, Login, Cadastro">
 
-    <link rel="stylesheet" href="../CSS/LoginPage.css">
+    <link rel="stylesheet" href="CSS/LoginPage.css">
 
     <title>Login Page</title>
 </head>
@@ -28,7 +28,7 @@
                 <button type="submit">Entrar</button>
             </form>
             <hr style="width: 100%;">
-            <button onclick="abrirPopup()">Cadastre-se</button>
+            <button id="abrirPopUp">Cadastre-se</button>
         </div>
     </div>
 
@@ -41,7 +41,7 @@
                     <div class="hbox">
                         <div class="vbox">
                             <input type="file" id="fotoUsuario" name="fotoUsuario" accept="image/*" style="opacity: 0; position: absolute;">
-                            <button onclick="document.getElementById('fotoUsuario').click()">Selecionar Arquivo</button>
+                            <button onclick="document.getElementById('fotoUsuario').click()")>Selecionar Arquivo</button>
                             <div class="image-preview" id="image-preview">
                                 <p typeof="file" accept="image/*">Nenhuma imagem selecionada</p>
                             </div>
@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="hbox">
-                        <button type="button" onclick="fecharPopup()">Cancelar</button>
+                        <button type="button" id="fecharPopUp">Cancelar</button>
                         <button type="submit">Criar</button>
                     </div>
                 </form>
@@ -76,6 +76,6 @@
         </div>
     </div>
 
-    <script src="../JavaScript/LoginPage.js"></script>
+    <script type="module" src="JavaScript/LoginPage.js"></script>
 </body>
 </html>
