@@ -1,10 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Home Page">
+    <meta name="author" content="Marco Aurélio Consoni Mazanti">
+    <meta name="keywords" content="Home Page">
+
+    <link rel="stylesheet" href="../CSS/HomePage.css">
+
+    <title>Home Page</title>
 </head>
 <body>
-    <p>Trocou de página</p>
+    <header>
+        <div id="Header"></div>
+    </header>
+
+    <main>
+        <div id="left">
+            <div id="informacaoJogador">
+                <div style="width: 100%;">
+                    <h2>Informações do Jogador</h2>
+                    <hr style="width: 100%">
+                </div>
+                <div id="grid-informacoes">
+                    <!-- Dados Pessoais -->
+                    <div id="left-info">
+                        <div class="divisor">
+                            <label class="tituloInfos">ID jogador: </label>
+                            <label class="valoresInfos"></label>
+                        </div>
+
+                        <div class="divisor">
+                            <label class="tituloInfos">Nome: </label>
+                            <label class="valoresInfos"></label><br>
+
+                            <label class="tituloInfos">Pontuação: </label>
+                            <label class="valoresInfos"></label><br>
+
+                            <label class="tituloInfos">Ranking: </label>
+                            <label class="valoresInfos"></label>
+                        </div>
+                    </div>
+
+                    <div id="center-info"></div>
+
+                    <!-- Dados de Jogo -->
+                    <div id="right-info">
+                        <div class="divisor">
+                            <label class="tituloInfos">Jogos participados: </label>
+                            <label class="valoresInfos"></label>
+                        </div>
+
+                        <div class="divisor">
+                            <label class="tituloInfos">Vitórias: </label>
+                            <label class="valoresInfos"></label><br>
+
+                            <label class="tituloInfos">Empates: </label>
+                            <label class="valoresInfos"></label><br>
+
+                            <label class="tituloInfos">Derrotas: </label>
+                            <label class="valoresInfos"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adicionar gráfico ilustrando esses dados -->
+            </div>
+        </div>
+        <div id="center"></div>
+        <div id="right">
+            <div id="rankingList">
+                <div style="width: 100%;">
+                    <h2>Ranking</h2>
+                    <hr style="width: 100%">
+                </div>
+
+                <!-- Adicionar Lista de Ranking -->
+                <table id="listagem">
+                    <thead>
+                        <tr>
+                            <th>Posição</th>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Vitórias</th>
+                            <th>Pontuação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Adiciona de forma dinâmica as linhas -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer id="Footer"></footer>
+
+    <script type="module" src="../JavaScript/HomePage.js"></script>
 </body>
 </html>

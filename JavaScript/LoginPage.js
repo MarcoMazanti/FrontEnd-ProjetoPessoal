@@ -58,7 +58,7 @@ document.getElementById("formLogin").addEventListener("submit", async function(e
     const email = document.getElementById("emailLogin").value;
     const senha = document.getElementById("senhaLogin").value;
 
-    const usuarioLogado = await PostLogin(email, senha);
+    usuarioLogado = await PostLogin(email, senha);
 
      if (usuarioLogado !== undefined && usuarioLogado != null) {
         window.location.href = "../Pages/HomePage.html";
@@ -87,20 +87,6 @@ document.getElementById("formCadastro").addEventListener("submit", async functio
     const confirmarSenhaInput = document.getElementById("confirmarSenhaCadastro");
     const confirmarSenha = confirmarSenhaInput ? confirmarSenhaInput.value.trim() : null;
 
-    // Verifica o tamanho da imagem
-    if (img) {
-        const tamanhoImagem = img.size;
-
-        // Define o limite máximo de tamanho (em bytes) - 500KB
-        const tamanhoMaximo = 500 * 1024;
-
-        if (tamanhoImagem > tamanhoMaximo) {
-            alert("A imagem selecionada é muito grande! O tamanho máximo permitido é 500KB.");
-        }
-    } else {
-        alert("Nenhuma imagem foi selecionada.");
-    }
-
     // Verifica se os elementos não estão nulos
     if (!img || !nome || !email || !senha || !confirmarSenha) {
         alert("Preencha todos os campos devidamente!");
@@ -128,17 +114,24 @@ document.getElementById('fotoUsuario').addEventListener('change', function(event
     const preview = document.getElementById('image-preview');
 
     if (file) {
-        const reader = new FileReader();
+        if (file.size <= 500 * 1024) {
+            const reader = new FileReader();
 
-        reader.onload = function(e) {
-            preview.innerHTML = '';
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            preview.appendChild(img);
+            reader.onload = function(e) {
+                preview.innerHTML = '';
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            alert("A imagem selecionada é muito grande! O tamanho máximo permitido é 500KB.");
+            preview.innerHTML = '<p>Nenhuma imagem selecionada</p>';
         }
-
-        reader.readAsDataURL(file);
     } else {
         preview.innerHTML = '<p>Nenhuma imagem selecionada</p>';
     }
 });
+
+export let usuarioLogado = null;

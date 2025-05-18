@@ -6,7 +6,7 @@
 - [X] Criar a página de Login
 - [X] Criar PopUp de Cadastro
 - [X] Utilizar Fetch
-- [ ] Criar a HomePage
+- [X] Criar a HomePage
 - [ ] Adicionar uma Lista de Ranking
 - [ ] Adicionar as Estatísticas Pessoas
 - [ ] Criar a página de Jogo

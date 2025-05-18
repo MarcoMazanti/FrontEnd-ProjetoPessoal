@@ -1,0 +1,54 @@
+.barraPesquisa {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 100px;
+    background-color: gray;
+    display: grid;
+    grid-template-areas: "left center right";
+    grid-template-columns: 200px 1fr 200px;
+}
+
+.left {
+    grid-area: left;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    justify-content: left;
+    text-align: center;
+}
+
+.center {
+    grid-area: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.right {
+    grid-area: right;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    justify-content: right;
+    text-align: center;
+}
+
+#iconHome {
+    height: 70px;
+    width: 70px;
+    transition: all 0.3s;
+}
+
+#iconHome:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#iconUser {
+    height: 70px;
+    width: 70px;
+    transition: all 0.3s;
+}
+
+#iconUser:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
