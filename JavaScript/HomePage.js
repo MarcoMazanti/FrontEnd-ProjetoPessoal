@@ -1,3 +1,7 @@
+import UsuarioManager from "./Usuario.js";
+
+const usuarioSalvo = UsuarioManager.getUsuarioLogado();
+
 document.addEventListener("DOMContentLoaded", function () {
     // Carrega o HTML do Header dinamicamente
     fetch("../Pages/Header.html")
@@ -36,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // edição da lista de Ranking
+// depois tenho que alterar a cor quando for o usuário
 const jogadores = [
     {id: 1, nome: "marco", vitorias: 10, pontuacao: 25},
     {id: 5, nome: "Marco", vitorias:8, pontuacao: 35},
@@ -56,6 +61,20 @@ jogadores.forEach(jogador => {
         <td>${jogador.pontuacao}</td>
     `;
 
+    if (usuarioSalvo != null && usuarioSalvo.id === jogador.id) {
+        tr.id = "usuarioLogado";
+    }
+
     contador++;
     tbody.appendChild(tr);
 });
+
+
+document.getElementById("idJogador").textContent = usuarioSalvo.id;
+document.getElementById("nomeJogador").textContent = usuarioSalvo.nome;
+document.getElementById("pontuacaoJogador").textContent = usuarioSalvo.pontuacao;
+
+document.getElementById("jogosParticipadosJogador").textContent = usuarioSalvo.jogosParticipados;
+document.getElementById("vitoriasJogador").textContent = usuarioSalvo.vitorias;
+document.getElementById("empatesJogador").textContent = usuarioSalvo.empates;
+document.getElementById("derrotasJogador").textContent = usuarioSalvo.derrotas;

@@ -55,7 +55,7 @@ hr {
 }
 
 .valoresInfos {
-    font-size: 15px;
+    font-size: 16px;
 }
 
 #listagem {
@@ -88,4 +88,9 @@ hr {
 
 #listagem tbody tr:nth-child(odd) {
     background-color: #bdbdbd;
+}
+
+#linhaUsuario {
+    background-color: #2c6a2c;
+    color: #e6e6e6;
 }

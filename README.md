@@ -8,7 +8,8 @@
 - [X] Utilizar Fetch
 - [X] Criar a HomePage
 - [ ] Adicionar uma Lista de Ranking
-- [ ] Adicionar as Estatísticas Pessoas
+- [X] Adicionar as Estatísticas Pessoas
+- [ ] Adicionar um Gráfico de Vitórias e Derrotas com o Tempo
 - [ ] Criar a página de Jogo
 - [ ] Possuir Chat ao Vivo
 

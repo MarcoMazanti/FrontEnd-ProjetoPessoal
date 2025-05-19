@@ -1,6 +1,7 @@
-import {PostLogin} from "../Service/ConectarUsuario.js";
-import {PostUsuario} from "../Service/ConectarUsuario.js";
-import {GetUsuario} from "../Service/ConectarUsuario.js";
+import {PostLogin, PostUsuario, GetUsuario} from "../Service/ConectarUsuario.js";
+import UsuarioManager from "./Usuario.js";
+
+let usuarioLogado = null;
 
 function abrirPopup() {
     document.getElementById("popupOverlay").classList.add("active");
@@ -61,7 +62,17 @@ document.getElementById("formLogin").addEventListener("submit", async function(e
     usuarioLogado = await PostLogin(email, senha);
 
      if (usuarioLogado !== undefined && usuarioLogado != null) {
-        window.location.href = "../Pages/HomePage.html";
+         UsuarioManager.setUsuarioLogado(
+             usuarioLogado.id,
+             usuarioLogado.nome,
+             usuarioLogado.email,
+             usuarioLogado.imagem,
+             usuarioLogado.pontuacao,
+             usuarioLogado.jogosParticipados,
+             usuarioLogado.vitorias,
+             usuarioLogado.empates,
+             usuarioLogado.derrotas);
+         window.location.href = "../Pages/HomePage.html";
     } else {
         alert("Usuário não encontrado!");
     }
@@ -133,5 +144,3 @@ document.getElementById('fotoUsuario').addEventListener('change', function(event
         preview.innerHTML = '<p>Nenhuma imagem selecionada</p>';
     }
 });
-
-export let usuarioLogado = null;
