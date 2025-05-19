@@ -9,6 +9,6 @@ if (iconHome) {
 
 if (iconUsuario) {
     iconUsuario.addEventListener("click", () => {
-        window.location.href = "../LoginPage.html";
+        window.location.href = "../Pages/LoginPage.html";
     });
 }
