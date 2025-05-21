@@ -7,7 +7,7 @@
 - [X] Criar PopUp de Cadastro
 - [X] Utilizar Fetch
 - [X] Criar a HomePage
-- [ ] Adicionar uma Lista de Ranking
+- [X] Adicionar uma Lista de Ranking
 - [X] Adicionar as Estatísticas Pessoas
 - [ ] Adicionar um Gráfico de Vitórias e Derrotas com o Tempo
 - [ ] Criar a página de Jogo

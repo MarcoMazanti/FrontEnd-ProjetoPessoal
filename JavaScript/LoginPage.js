@@ -1,5 +1,5 @@
 import {PostLogin, PostUsuario, GetUsuario} from "../Service/ConectarUsuario.js";
-import UsuarioManager from "./Usuario.js";
+import UsuarioManager from "./Models/Usuario.js";
 
 let usuarioLogado = null;
 

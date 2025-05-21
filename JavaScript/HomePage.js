@@ -1,4 +1,5 @@
-import UsuarioManager from "./Usuario.js";
+import UsuarioManager from "./Models/Usuario.js";
+import {getRanking, getRankingTodos} from "../Service/RankingRequest.js";
 
 const usuarioSalvo = UsuarioManager.getUsuarioLogado();
 
@@ -41,40 +42,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // edição da lista de Ranking
 // depois tenho que alterar a cor quando for o usuário
-const jogadores = [
-    {id: 1, nome: "marco", vitorias: 10, pontuacao: 25},
-    {id: 5, nome: "Marco", vitorias:8, pontuacao: 35},
-    {id: 7, nome: "MArco", vitorias: 7, pontuacao: 20},
-    {id: 13, nome: "MARco", vitorias: 3, pontuacao: 19}
-];
+getRankingTodos().then(jogadores => {
+    const tbody = document.querySelector("#listagem tbody");
+    tbody.innerHTML = "";
 
-const tbody = document.querySelector("#listagem tbody");
+    let contador = 1;
+    jogadores.forEach(jogador => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${contador}</td>
+            <td>${jogador.id}</td>
+            <td>${jogador.nome}</td>
+            <td>${jogador.vitorias}</td>
+            <td>${jogador.pontuacao}</td>
+        `;
 
-let contador = 1;
-jogadores.forEach(jogador => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-        <td>${contador}</td>
-        <td>${jogador.id}</td>       
-        <td>${jogador.nome}</td>
-        <td>${jogador.vitorias}</td>
-        <td>${jogador.pontuacao}</td>
-    `;
+        if (usuarioSalvo != null && usuarioSalvo.id === jogador.id) {
+            tr.classList.add("linhaUsuario");
+        }
 
-    if (usuarioSalvo != null && usuarioSalvo.id === jogador.id) {
-        tr.id = "usuarioLogado";
-    }
-
-    contador++;
-    tbody.appendChild(tr);
+        contador++;
+        tbody.appendChild(tr);
+    });
 });
 
 
-document.getElementById("idJogador").textContent = usuarioSalvo.id;
-document.getElementById("nomeJogador").textContent = usuarioSalvo.nome;
-document.getElementById("pontuacaoJogador").textContent = usuarioSalvo.pontuacao;
+// Função para buscar ranking
+async function getRankingJogador(id) {
+    try {
+        return await getRanking(id);
+    } catch (error) {
+        console.error('Erro ao buscar ranking:', error);
+        return null;
+    }
+}
 
-document.getElementById("jogosParticipadosJogador").textContent = usuarioSalvo.jogosParticipados;
-document.getElementById("vitoriasJogador").textContent = usuarioSalvo.vitorias;
-document.getElementById("empatesJogador").textContent = usuarioSalvo.empates;
-document.getElementById("derrotasJogador").textContent = usuarioSalvo.derrotas;
+// Atualizar info do jogador na tela
+async function carregarInfoJogador() {
+    const rankingUsuario = await getRankingJogador(usuarioSalvo.id);
+
+    if (!rankingUsuario) {
+        console.error('Ranking não encontrado.');
+        return;
+    }
+
+    document.getElementById("idJogador").textContent = usuarioSalvo.id;
+    document.getElementById("nomeJogador").textContent = usuarioSalvo.nome;
+    document.getElementById("pontuacaoJogador").textContent = usuarioSalvo.pontuacao;
+    document.getElementById("rankingJogador").textContent = rankingUsuario.ranking;
+    document.getElementById("jogosParticipadosJogador").textContent = usuarioSalvo.jogosParticipados;
+    document.getElementById("vitoriasJogador").textContent = usuarioSalvo.vitorias;
+    document.getElementById("empatesJogador").textContent = usuarioSalvo.empates;
+    document.getElementById("derrotasJogador").textContent = usuarioSalvo.derrotas;
+}
+
+carregarInfoJogador();

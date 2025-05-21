@@ -1,4 +1,4 @@
-import {Usuario} from "../JavaScript/Usuario.js";
+import {Usuario} from "../JavaScript/Models/Usuario.js";
 
 export async function PostLogin(email, senha) {
     try {
