@@ -43,9 +43,32 @@ export function PostUsuario(nome, email, senha, img) {
         .catch(error => console.log(error));
 }
 
+export async function PostVerificarInexistenciaEmail(id, email) {
+    try {
+        const formData = new FormData();
+        formData.append('email', email);
+
+        const resposta = await fetch(`http://localhost:8080/api/usuarios/verificarInexistenciaEmail/${id}`, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao buscar usuário");
+        }
+
+        const data = resposta.text();
+
+        return data === "Email não cadastrado";
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
 export async function GetUsuario(email) {
     try {
-        const resposta = await fetch(`http://localhost:8080/api/usuarios/${encodeURIComponent(email)}`, {
+        const resposta = await fetch('http://localhost:8080/api/usuarios/${encodeURIComponent(email)}', {
             method: 'GET'
         });
 
@@ -55,6 +78,70 @@ export async function GetUsuario(email) {
 
         const data = await resposta.json();
         return new Usuario(data.id, data.nome, data.email, data.imagem, data.pontuacao, data.jogosParticipados, data.vitorias, data.empates, data.derrotas);
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export async function GetUsuarioFoto(id) {
+    try {
+        const resposta = await fetch(`http://localhost:8080/api/usuarios/foto/${id}`, {
+            method: 'GET'
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao buscar foto do usuário");
+        }
+
+        const data = await resposta.blob();
+
+        return URL.createObjectURL(data);
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export async function PutUSuario(id, foto, nome, email) {
+    try {
+        const formData = new FormData();
+        formData.append('imagem', foto);
+        formData.append('nome', nome);
+        formData.append('email', email);
+
+        console.log(foto);
+        console.log(nome);
+        console.log(email);
+
+        console.log(formData);
+
+        fetch('http://localhost:8080/api/usuarios/atualizar/' + id, {
+            method: 'PUT',
+            body: formData
+        })
+            .then(resposta => resposta.text())
+            .then(usuario => console.log(usuario))
+            .catch(error => console.log(error));
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export async function DeleteUsuario(id) {
+    try {
+        const resposta = await fetch('http://localhost:8080/api/usuarios/deletar/' + id, {
+            method: 'DELETE'
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao deletar usuário");
+        }
+
+        const data = await resposta.text();
+
+        console.log(data);
     } catch (error) {
         console.error(error);
         return null;

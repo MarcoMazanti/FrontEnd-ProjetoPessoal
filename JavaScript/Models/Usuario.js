@@ -85,7 +85,7 @@ class UsuarioManager {
                 dadosUsuario.id,
                 dadosUsuario.nome,
                 dadosUsuario.email,
-                null,
+                dadosUsuario.imagem,
                 dadosUsuario.pontuacao,
                 dadosUsuario.jogosParticipados,
                 dadosUsuario.vitorias,
@@ -101,6 +101,7 @@ class UsuarioManager {
 
     static limparSessao() {
         this.usuarioLogado = null;
+        document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     }
 
     static printer() {

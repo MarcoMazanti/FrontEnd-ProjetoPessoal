@@ -42,13 +42,134 @@
     transform: scale(1.1);
 }
 
-#iconUser {
+#menuIcon {
     height: 70px;
     width: 70px;
     transition: all 0.3s;
 }
 
-#iconUser:hover {
+#menuIcon:hover {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+.overlayFlex-End {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.overlayFlex-End.active {
+    display: flex;
+}
+
+.overlayFlex-Center {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.overlayFlex-Center.active {
+    display: flex;
+}
+
+#popUpBox {
+    background: white;
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: -4px 0 8px rgba(0,0,0,0.2);
+}
+
+#popUpVerificar {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: -4px 0 8px rgba(0,0,0,0.2);
+}
+
+.alinharCentro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 70%;
+}
+
+#exitIcon {
+    height: 40px;
+    width: 40px;
+    transition: all 0.3s;
+}
+
+#exitIcon:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#userIcon {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+.boxLateral {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding-top: 10px;
+}
+
+.btnLateral {
+    width: 100%;
+    height: 40px;
+    background-color: gray;
+    border: 2px solid black;
+    font-size: 20px;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.btnLateral:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.btnPopUpSair {
+    width: 100%;
+    height: 40px;
+    background-color: gray;
+    border: 2px solid black;
+    font-size: 18px;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.btnPopUpSair:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.alinharBtns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10%;
 }

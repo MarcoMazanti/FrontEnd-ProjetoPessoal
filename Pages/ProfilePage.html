@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profile Page">
+    <meta name="author" content="Marco Aurélio Consoni Mazanti">
+    <meta name="keywords" content="Perfil usuário, edição de perfil, exclução de perfil">
+
+    <link rel="stylesheet" href="../CSS/ProfilePage.css">
+
+    <title>Login Page</title>
+</head>
+<body>
+    <header>
+        <div id="Header"></div>
+    </header>
+
+    <main>
+        <div class="blocoInfoUsuario">
+            <h1>Perfil Usuário</h1>
+            <hr style="width: 100%">
+
+            <div id="grid-informacoes">
+                <div id="left-info">
+                    <input type="file" id="inputFotoUsuario" accept="image/*" style="opacity: 0; position: absolute;">
+                    <button id="btnEditFotoPerfil">Editar Foto</button>
+                    <img src="../Assets/Icon/semUsuario.png" id="fotoUsuario">
+                </div>
+
+                <div id="right-info">
+                    <div class="blocoDados">
+                        <div class="setorInfo">
+                            <label class="tituloDados">ID: </label>
+                            <label class="infoDados" id="idUsuario"></label>
+                        </div>
+                    </div>
+
+                    <div class="blocoDados">
+                        <div class="setorInfo">
+                            <label class="tituloDados">Nome: </label>
+                            <label class="infoDados" id="nomeUsuario"></label>
+                        </div>
+
+                        <input type="text" id="nomeUsuarioInput" placeholder="Digite seu nome">
+                    </div>
+
+                    <div class="blocoDados">
+                        <div class="setorInfo">
+                            <label class="tituloDados">Email: </label>
+                            <label class="infoDados" id="emailUsuario"></label>
+                        </div>
+
+                        <input type="email" id="emailUsuarioInput" placeholder="Digite seu email">
+                    </div>
+
+                    <div class="blocoDados">
+                        <div class="setorInfo">
+                            <label class="tituloDados">Quantidade Amigos: </label>
+                            <label class="infoDados" id="amigosUsuario"></label>
+                        </div>
+                    </div>
+
+                    <div id="btns-editar-excluir">
+                        <button id="btnEsquerdo">Editar Perfil</button>
+                        <button id="btnDireito">Excluir Perfil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="popupExcluir" class="overlayFlex-Center">
+        <div id="popUpExclucao">
+            <div class="vbox">
+                <h1>Você tem certeza?</h1>
+                <div class="hbox alinharBtns">
+                    <button class="btnPopUpSair" id="btnCancelarPerfil">Não</button>
+                    <button class="btnPopUpSair" id="btnExcluirPerfil">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="Footer"></footer>
+
+    <script type="module" src="../JavaScript/ProfilePage.js"></script>
+</body>
+</html>

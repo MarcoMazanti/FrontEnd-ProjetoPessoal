@@ -14,7 +14,41 @@
            <h1>ChessRoom</h1>
         </div>
         <div class="right">
-            <img src="../Assets/Icon/logout.png" id="iconUser">
+            <img src="../Assets/Icon/menuIcon.png" id="menuIcon">
+        </div>
+    </div>
+
+    <div id="popupMenu" class="overlayFlex-End">
+        <div id="popUpBox">
+            <div class="vbox">
+                <div class="hbox alinharCentro">
+                    <img src="../Assets/Icon/exitIcon.png" id="exitIcon">
+
+                    <img src="../Assets/Icon/semUsuario.png" id="userIcon">
+                </div>
+
+                <hr style="width: 100%">
+
+                <div class="boxLateral">
+                    <button class="btnLateral" id="editPerfilBtn">Perfil</button>
+                    <button class="btnLateral" id="amigosBtn">Amigos</button>
+                    <button class="btnLateral" id="configBtn">Configurações</button>
+                    <hr style="width: 100%">
+                    <button class="btnLateral" id="sairContaBtn">Sair da Conta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupSair" class="overlayFlex-Center">
+        <div id="popUpVerificar">
+            <div class="vbox">
+                <h1>Você tem certeza?</h1>
+                <div class="hbox alinharBtns">
+                    <button class="btnPopUpSair" id="cancelarBtn">Não</button>
+                    <button class="btnPopUpSair" id="sairBtn">Sim</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
