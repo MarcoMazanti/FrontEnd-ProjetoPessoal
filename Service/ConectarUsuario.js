@@ -43,7 +43,7 @@ export function PostUsuario(nome, email, senha, img) {
         .catch(error => console.log(error));
 }
 
-export async function PostVerificarInexistenciaEmail(id, email) {
+export async function PostVerificarInexistenciaEmailAtualizar(id, email) {
     try {
         const formData = new FormData();
         formData.append('email', email);
@@ -54,7 +54,30 @@ export async function PostVerificarInexistenciaEmail(id, email) {
         });
 
         if (!resposta.ok) {
-            throw new Error("Erro ao buscar usuário");
+            throw new Error("Erro ao verificar email");
+        }
+
+        const data = resposta.text();
+
+        return data === "Email não cadastrado";
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export async function PostVerificarInexistenciaEmailCadasatrar(email) {
+    try {
+        const formData = new FormData();
+        formData.append('email', email);
+
+        const resposta = await fetch('http://localhost:8080/api/usuarios/verificarInexistenciaEmail', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao verificar email");
         }
 
         const data = resposta.text();

@@ -1,4 +1,9 @@
-import {PostLogin, PostUsuario, GetUsuario} from "../Service/ConectarUsuario.js";
+import {
+    PostLogin,
+    PostUsuario,
+    GetUsuario,
+    PostVerificarInexistenciaEmailCadasatrar
+} from "../Service/ConectarUsuario.js";
 import UsuarioManager from "./Models/Usuario.js";
 
 let usuarioLogado = null;
@@ -40,9 +45,14 @@ function validacaoDeSenha(senha) {
     return temMaiusculo && temMinusculo && temNumero && tem8Letras;
 }
 
-function validacaoDeCadastro(senha, confirmarSenha) {
+async function validacaoDeCadastro(email, senha, confirmarSenha) {
     if (senha === confirmarSenha) {
-        return validacaoDeSenha(senha);
+        if (await PostVerificarInexistenciaEmailCadasatrar(email)) {
+            return validacaoDeSenha(senha);
+        } else {
+            alert("Email já cadastrado!");
+            return false;
+        }
     } else {
         return false;
     }
@@ -102,7 +112,7 @@ document.getElementById("formCadastro").addEventListener("submit", async functio
     if (!img || !nome || !email || !senha || !confirmarSenha) {
         alert("Preencha todos os campos devidamente!");
     } else {
-        if (validacaoDeCadastro(senha, confirmarSenha)) {
+        if (await validacaoDeCadastro(email, senha, confirmarSenha)) {
             const verificarUsuarioExistente = await GetUsuario(email);
 
             // verifica se o usuário já existe(!null) ou não(null)
