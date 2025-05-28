@@ -1,5 +1,5 @@
 import UsuarioManager from "./Models/Usuario.js";
-import {DeleteUsuario, GetUsuarioFoto, PostVerificarInexistenciaEmail, PutUSuario} from "../Service/ConectarUsuario.js";
+import {DeleteUsuario, GetUsuarioFoto, PostVerificarInexistenciaEmailAtualizar, PutUSuario} from "../Service/ConectarUsuario.js";
 
 const usuarioLogado = UsuarioManager.getUsuarioLogado();
 const btnDireito = document.getElementById("btnDireito");
@@ -70,7 +70,7 @@ async function salvarPerfil() {
                 novoEmail = usuarioLogado.email;
                 emailInexistente = true;
             } else {
-                emailInexistente = await PostVerificarInexistenciaEmail(usuarioLogado.id, novoEmail);
+                emailInexistente = await PostVerificarInexistenciaEmailAtualizar(usuarioLogado.id, novoEmail);
             }
 
             if (emailInexistente) {

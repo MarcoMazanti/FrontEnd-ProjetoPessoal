@@ -1,4 +1,5 @@
 import {Usuario} from "../JavaScript/Models/Usuario.js";
+import {UsuarioFrontEndParcial} from "../JavaScript/Models/UsuarioFrontEndParcial.js";
 
 export async function PostLogin(email, senha) {
     try {
@@ -104,6 +105,32 @@ export async function GetUsuario(email) {
     } catch (error) {
         console.error(error);
         return null;
+    }
+}
+
+export async function GetTodosUsuarios() {
+    try {
+        const resposta = await fetch('http://localhost:8080/api/usuarios/todos', {
+            method: 'GET'
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao buscar usuário");
+        }
+
+        const data = await resposta.json();
+
+        let listaUsuarios = [];
+
+        for (let usuarioBackend of data) {
+            const usuario = UsuarioFrontEndParcial.fromBackendData(usuarioBackend);
+            listaUsuarios.push(usuario);
+        }
+
+        return listaUsuarios;
+    } catch (error) {
+        console.error(error);
+        return [];
     }
 }
 

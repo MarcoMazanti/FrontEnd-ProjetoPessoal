@@ -1,0 +1,118 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: rgba(228, 228, 228, 0.96);
+    font-family: Arial, sans-serif;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 0 50px 0;
+}
+
+hr {
+    height: 2px;
+    background-color: black;
+    border: none;
+}
+
+#grid-amizade {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-areas: "left right";
+    grid-template-columns: 25% 75%;
+    justify-content: center;
+}
+
+#listaAmigos {
+    grid-area: left;
+    background-color: gray;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 20%;
+    padding: 20px;
+}
+
+#blocoAdicionarAmigo {
+    grid-area: right;
+    background-color: gray;
+    border-radius: 20px;
+    margin-right: 7%;
+    padding: 20px;
+}
+
+#buscarAmigo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+input {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 30px;
+    width: 50%;
+    margin-right: 10px;
+}
+
+button {
+    background-color: rgba(228, 228, 228, 0.96);
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 30px;
+    width: 150px;
+    padding: 10px;
+    line-height: 10px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#listagem {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#listagem thead {
+    background-color: #424242;
+    color: #e6e6e6;
+    height: 30px;
+}
+
+#listagem tbody {
+    color: black;
+}
+
+#listagem tbody tr {
+    height: 25px;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+#listagem tbody tr:nth-child(even) {
+    background-color: #e6e6e6;
+}
+
+#listagem tbody tr:nth-child(odd) {
+    background-color: #bdbdbd;
+}
+
+.imgBuscaAmigo {
+    width: 20px;
+    height: 20px;
+}
+
+.imgBuscaAmigo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}

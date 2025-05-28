@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amizade Page">
+    <meta name="author" content="Marco Aurélio Consoni Mazanti">
+    <meta name="keywords" content="Adicionar amigo, Remover amigo, Visuizar amizade">
+
+    <link rel="stylesheet" href="../CSS/AmizadePage.css">
+
+    <title>Amizade Page</title>
+</head>
+<body>
+    <header>
+        <div id="Header"></div>
+    </header>
+
+    <main>
+        <div id="grid-amizade">
+            <section id="listaAmigos">
+                <h1>Amigos</h1>
+                <hr style="width: 100%">
+            </section>
+
+            <section id="blocoAdicionarAmigo">
+                <h1>Buscar Amigo</h1>
+                <hr style="width: 100%">
+                <div id="buscarAmigo">
+                    <input type="text" id="inputBuscarAmigo" placeholder="Digite o ID ou NOME do amigo">
+                    <button id="btnBuscarAmigo">Buscar</button>
+                </div>
+
+                <!-- Adicionar Lista de Busca de Amigos -->
+                <table id="listagem">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th style="width:1%; white-space:nowrap; padding: 0 10px 0 10px;">Mensagem</th>
+                        <th style="width:1%; white-space:nowrap; padding: 0 10px 0 10px;">Adicionar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Adiciona de forma dinâmica as linhas -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <footer id="Footer"></footer>
+
+    <script type="module" src="../JavaScript/AmizadePage.js"></script>
+</body>
+</html>

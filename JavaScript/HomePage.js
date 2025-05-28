@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // edição da lista de Ranking
-// depois tenho que alterar a cor quando for o usuário
 getRankingTodos().then(jogadores => {
     const tbody = document.querySelector("#listagem tbody");
     tbody.innerHTML = "";

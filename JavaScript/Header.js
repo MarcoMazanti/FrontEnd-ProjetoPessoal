@@ -34,6 +34,10 @@ function editarPerfil() {
     window.location.href = "ProfilePage.html";
 }
 
+function visualizarAmizade() {
+    window.location.href = "AmizadePage.html";
+}
+
 async function mudarFoto() {
     const url = await GetUsuarioFoto(usuarioLogado.id);
     if (url) {
@@ -54,6 +58,7 @@ document.getElementById("cancelarBtn").addEventListener("click", fecharPopupSair
 document.getElementById("sairBtn").addEventListener("click", sair);
 
 document.getElementById("editPerfilBtn").addEventListener("click", editarPerfil);
+document.getElementById("amigosBtn").addEventListener("click", visualizarAmizade);
 
 window.addEventListener("load", () => {
     mudarFoto();
