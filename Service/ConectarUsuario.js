@@ -58,7 +58,7 @@ export async function PostVerificarInexistenciaEmailAtualizar(id, email) {
             throw new Error("Erro ao verificar email");
         }
 
-        const data = resposta.text();
+        const data = await resposta.text();
 
         return data === "Email não cadastrado";
     } catch (error) {
@@ -81,7 +81,9 @@ export async function PostVerificarInexistenciaEmailCadasatrar(email) {
             throw new Error("Erro ao verificar email");
         }
 
-        const data = resposta.text();
+        const data = await resposta.text();
+
+        console.log(data);
 
         return data === "Email não cadastrado";
     } catch (error) {
@@ -102,6 +104,54 @@ export async function GetUsuario(email) {
 
         const data = await resposta.json();
         return new Usuario(data.id, data.nome, data.email, data.imagem, data.pontuacao, data.jogosParticipados, data.vitorias, data.empates, data.derrotas);
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export async function GetUsuarioID(id) {
+    try {
+        const resposta = await fetch(`http://localhost:8080/api/usuarios/id/${id}`, {
+            method: 'GET'
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao getUsuarioID");
+        }
+
+        const data = await resposta.json();
+
+        if (!data) {
+            console.warn("Erro ao getUsuarioID");
+            return null;
+        } else {
+            return new Usuario(data.id, data.nome, data.email, data.imagem, data.pontuacao, data.jogosParticipados, data.vitorias, data.empates, data.derrotas);
+        }
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export async function GetUsuarioNome(nome) {
+    try {
+        const resposta = await fetch(`http://localhost:8080/api/usuarios/nome/${nome}`, {
+            method: 'GET'
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao getUsuarioNome");
+        }
+
+        const data = await resposta.json();
+
+        if (!data) {
+            console.warn("Erro ao getUsuarioNome");
+            return null;
+        } else {
+            return Usuario.formatBackEndList(data);
+        }
     } catch (error) {
         console.error(error);
         return null;

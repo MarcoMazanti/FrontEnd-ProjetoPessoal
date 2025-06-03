@@ -40,6 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
+document.getElementById("jogarBtn").addEventListener("click", jogar);
+
+function jogar() {
+    console.log("Jogar");
+}
+
 // edição da lista de Ranking
 getRankingTodos().then(jogadores => {
     const tbody = document.querySelector("#listagem tbody");
@@ -64,7 +70,6 @@ getRankingTodos().then(jogadores => {
         tbody.appendChild(tr);
     });
 });
-
 
 // Função para buscar ranking
 async function getRankingJogador(id) {

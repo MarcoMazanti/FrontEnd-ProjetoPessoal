@@ -46,6 +46,24 @@ export class Usuario {
     get derrotas() {
         return this._derrotas;
     }
+
+    static formatBackEndData(backEndData) {
+        const id = backEndData.id;
+        const nome = backEndData.nome;
+        const email = backEndData.email;
+        const imagem = backEndData.imagem;
+        const pontuacao = backEndData.pontuacao;
+        const jogosParticipados = backEndData.jogosParticipados;
+        const vitorias = backEndData.vitorias;
+        const empates = backEndData.empates;
+        const derrotas = backEndData.derrotas;
+
+        return new Usuario(id, nome, email, imagem, pontuacao, jogosParticipados, vitorias, empates, derrotas);
+    }
+
+    static formatBackEndList(backEndList) {
+        return backEndList.map((backEndData) => this.formatBackEndData(backEndData));
+    }
 }
 
 // devo armazenar de forma externa para prevenir que o JS reinicie e perca todos os dados

@@ -112,10 +112,11 @@ document.getElementById("formCadastro").addEventListener("submit", async functio
     if (!img || !nome || !email || !senha || !confirmarSenha) {
         alert("Preencha todos os campos devidamente!");
     } else {
-        if (await validacaoDeCadastro(email, senha, confirmarSenha)) {
+        if (!(await validacaoDeCadastro(email, senha, confirmarSenha))) {
+            alert("Senha inválida\nDigite uma senha com no mínimo 8 caracteres\nLetras maiúsculas, minúsculas e números");
+        } else {
             const verificarUsuarioExistente = await GetUsuario(email);
 
-            // verifica se o usuário já existe(!null) ou não(null)
             if (verificarUsuarioExistente == null) {
                 PostUsuario(nome, email, senha, img);
 
@@ -123,8 +124,6 @@ document.getElementById("formCadastro").addEventListener("submit", async functio
             } else {
                 alert("Usuário já cadastrado!");
             }
-        } else {
-            alert("Senha inválida\nDigite uma senha com no mínimo 8 caracteres\nLetras maiúsculas, minúsculas e números");
         }
     }
 });

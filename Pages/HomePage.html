@@ -18,68 +18,73 @@
     </header>
 
     <main>
-        <div id="left">
-            <div id="informacaoJogador">
-                <div style="width: 100%;">
-                    <h2>Informações do Jogador</h2>
-                    <hr style="width: 100%">
-                </div>
-                <div id="grid-informacoes">
-                    <!-- Dados Pessoais -->
-                    <div id="left-info">
-                        <div class="divisor">
-                            <label class="tituloInfos">ID jogador: </label>
-                            <label class="valoresInfos" id="idJogador"></label>
-                        </div>
-
-                        <div class="divisor">
-                            <label class="tituloInfos">Nome: </label>
-                            <label class="valoresInfos" id="nomeJogador"></label><br>
-
-                            <label class="tituloInfos">Pontuação: </label>
-                            <label class="valoresInfos" id="pontuacaoJogador"></label><br>
-
-                            <label class="tituloInfos">Ranking: </label>
-                            <label class="valoresInfos" id="rankingJogador"></label>
-                        </div>
-                    </div>
-
-                    <div id="center-info"></div>
-
-                    <!-- Dados de Jogo -->
-                    <div id="right-info">
-                        <div class="divisor">
-                            <label class="tituloInfos">Jogos participados: </label>
-                            <label class="valoresInfos" id="jogosParticipadosJogador"></label>
-                        </div>
-
-                        <div class="divisor">
-                            <label class="tituloInfos">Vitórias: </label>
-                            <label class="valoresInfos" id="vitoriasJogador"></label><br>
-
-                            <label class="tituloInfos">Empates: </label>
-                            <label class="valoresInfos" id="empatesJogador"></label><br>
-
-                            <label class="tituloInfos">Derrotas: </label>
-                            <label class="valoresInfos" id="derrotasJogador"></label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Adicionar gráfico ilustrando esses dados -->
-            </div>
+        <div id="jogar">
+            <button type="button" id="jogarBtn">Jogar</button>
         </div>
-        <div id="center"></div>
-        <div id="right">
-            <div id="rankingList">
-                <div style="width: 100%;">
-                    <h2>Ranking</h2>
-                    <hr style="width: 100%">
-                </div>
 
-                <!-- Adicionar Lista de Ranking -->
-                <table id="listagem">
-                    <thead>
+        <div id="conteudo">
+            <div id="left">
+                <div id="informacaoJogador">
+                    <div style="width: 100%;">
+                        <h2>Informações do Jogador</h2>
+                        <hr style="width: 100%">
+                    </div>
+                    <div id="grid-informacoes">
+                        <!-- Dados Pessoais -->
+                        <div id="left-info">
+                            <div class="divisor">
+                                <label class="tituloInfos">ID jogador: </label>
+                                <label class="valoresInfos" id="idJogador"></label>
+                            </div>
+
+                            <div class="divisor">
+                                <label class="tituloInfos">Nome: </label>
+                                <label class="valoresInfos" id="nomeJogador"></label><br>
+
+                                <label class="tituloInfos">Pontuação: </label>
+                                <label class="valoresInfos" id="pontuacaoJogador"></label><br>
+
+                                <label class="tituloInfos">Ranking: </label>
+                                <label class="valoresInfos" id="rankingJogador"></label>
+                            </div>
+                        </div>
+
+                        <div id="center-info"></div>
+
+                        <!-- Dados de Jogo -->
+                        <div id="right-info">
+                            <div class="divisor">
+                                <label class="tituloInfos">Jogos participados: </label>
+                                <label class="valoresInfos" id="jogosParticipadosJogador"></label>
+                            </div>
+
+                            <div class="divisor">
+                                <label class="tituloInfos">Vitórias: </label>
+                                <label class="valoresInfos" id="vitoriasJogador"></label><br>
+
+                                <label class="tituloInfos">Empates: </label>
+                                <label class="valoresInfos" id="empatesJogador"></label><br>
+
+                                <label class="tituloInfos">Derrotas: </label>
+                                <label class="valoresInfos" id="derrotasJogador"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Adicionar gráfico ilustrando esses dados -->
+                </div>
+            </div>
+            <div id="center"></div>
+            <div id="right">
+                <div id="rankingList">
+                    <div style="width: 100%;">
+                        <h2>Ranking</h2>
+                        <hr style="width: 100%">
+                    </div>
+
+                    <!-- Adicionar Lista de Ranking -->
+                    <table id="listagem">
+                        <thead>
                         <tr>
                             <th>Posição</th>
                             <th>ID</th>
@@ -87,11 +92,12 @@
                             <th>Vitórias</th>
                             <th>Pontuação</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         <!-- Adiciona de forma dinâmica as linhas -->
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </main>

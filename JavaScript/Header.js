@@ -30,12 +30,24 @@ function sair() {
     window.location.href = "LoginPage.html";
 }
 
+function jogar() {
+    console.log("Jogar");
+}
+
 function editarPerfil() {
     window.location.href = "ProfilePage.html";
 }
 
 function visualizarAmizade() {
     window.location.href = "AmizadePage.html";
+}
+
+function conversar() {
+    window.location.href = "../Pages/ChatPage.html";
+}
+
+function configurar() {
+    console.log("Configurar");
 }
 
 async function mudarFoto() {
@@ -47,7 +59,6 @@ async function mudarFoto() {
     }
 }
 
-
 document.getElementById("iconHome").addEventListener("click", voltarHome);
 document.getElementById("menuIcon").addEventListener("click", abrirPopupMenu);
 
@@ -57,8 +68,11 @@ document.getElementById("sairContaBtn").addEventListener("click", abrirPopupSair
 document.getElementById("cancelarBtn").addEventListener("click", fecharPopupSair);
 document.getElementById("sairBtn").addEventListener("click", sair);
 
+document.getElementById("jogarBtn").addEventListener("click", jogar)
 document.getElementById("editPerfilBtn").addEventListener("click", editarPerfil);
 document.getElementById("amigosBtn").addEventListener("click", visualizarAmizade);
+document.getElementById("conversaBtn").addEventListener("click", conversar);
+document.getElementById("configBtn").addEventListener("click", configurar);
 
 window.addEventListener("load", () => {
     mudarFoto();

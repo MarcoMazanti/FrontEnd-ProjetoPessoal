@@ -21,24 +21,59 @@
             <section id="listaAmigos">
                 <h1>Amigos</h1>
                 <hr style="width: 100%">
+
+                <!-- Adicionar Lista de Amizade Feita -->
+                <table class="lista" id="listaAmgFeita">
+                    <thead>
+                    <tr>
+                        <th style="width:1%; white-space:nowrap; padding: 0 10px 0 10px;">ID</th>
+                        <th>Nome</th>
+                        <th style="width:1%; white-space:nowrap; padding: 0 10px 0 10px;">Msg</th>
+                        <th style="width:1%; white-space:nowrap; padding: 0 10px 0 10px;">Del</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Adiciona de forma dinâmica as linhas -->
+                    </tbody>
+                </table>
             </section>
 
             <section id="blocoAdicionarAmigo">
                 <h1>Buscar Amigo</h1>
                 <hr style="width: 100%">
                 <div id="buscarAmigo">
-                    <input type="text" id="inputBuscarAmigo" placeholder="Digite o ID ou NOME do amigo">
+                    <input type="text" id="inputBuscarAmigo" placeholder="Digite o ID do amigo">
                     <button id="btnBuscarAmigo">Buscar</button>
                 </div>
 
                 <!-- Adicionar Lista de Busca de Amigos -->
-                <table id="listagem">
+                <table class="lista" id="listaBuscaAmigo">
                     <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
                         <th style="width:1%; white-space:nowrap; padding: 0 10px 0 10px;">Mensagem</th>
                         <th style="width:1%; white-space:nowrap; padding: 0 10px 0 10px;">Adicionar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Adiciona de forma dinâmica as linhas -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="listaAmizadePendente">
+                <h1>Amizade Pendente</h1>
+                <hr style="width: 100%">
+
+                <!-- Adicionar Lista de Amizade Pendente -->
+                <table class="lista" id="listaAmgPendente">
+                    <thead>
+                    <tr>
+                        <th style="width:1%; white-space:nowrap; padding: 0 10px 0 10px;">ID</th>
+                        <th>Nome</th>
+                        <th style="width:1%; white-space:nowrap; padding: 0 10px 0 10px;">Add</th>
+                        <th style="width:1%; white-space:nowrap; padding: 0 10px 0 10px;">Del</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -9,11 +9,6 @@ html, body {
 
 main {
     flex: 1;
-    display: grid;
-    grid-template-areas: "left center right";
-    grid-template-columns: 49% 2% 49%;
-    justify-content: center;
-    padding: 20px;
 }
 
 h2 {
@@ -24,6 +19,51 @@ hr {
     height: 2px;
     background-color: black;
     border: none;
+}
+
+button {
+    background-color: gray;
+    border-radius: 10px;
+    border: 1px solid black;
+    height: 50px;
+    width: 200px;
+    padding: 10px;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    cursor: hand;
+    transform: scale(1.1);
+}
+
+#jogar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#conteudo {
+    flex: 1;
+    display: grid;
+    grid-template-areas: "left center right";
+    grid-template-columns: 49% 2% 49%;
+    justify-content: center;
+    padding: 20px;
+}
+
+#left {
+    grid-area: left;
+}
+
+#center {
+    grid-area: center;
+}
+
+#right {
+    grid-area: right;
 }
 
 #informacaoJogador, #rankingList {

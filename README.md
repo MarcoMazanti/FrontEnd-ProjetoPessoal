@@ -9,6 +9,7 @@
 - [X] Criar a HomePage
 - [X] Adicionar uma Lista de Ranking
 - [X] Adicionar as Estatísticas Pessoas
+- [X] Pagina para Adicionar e Buscar Amigos
 - [ ] Adicionar um Gráfico de Vitórias e Derrotas com o Tempo
 - [ ] Criar a página de Jogo
 - [ ] Possuir Chat ao Vivo
