@@ -1,3 +1,10 @@
+import UsuarioManager from "./Models/Usuario.js";
+import {GetTodasAmizadasFeitasJogador} from "../Service/ControllerAmizade.js";
+import {GetUsuarioID} from "../Service/ConectarUsuario.js";
+
+const usuarioSalvo = UsuarioManager.getUsuarioLogado();
+let id = getMensagemDoCookie();
+console.log(id);
 
 document.addEventListener("DOMContentLoaded", function () {
     // Carrega o HTML do Header dinamicamente
@@ -35,3 +42,65 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 });
+
+
+if (id != null) {
+    document.getElementById("chat").style.visibility = "visible";
+} else {
+    document.getElementById("chat").style.visibility = "hidden";
+}
+
+listarAmigos().then(async amigos => {
+    const tbody = document.querySelector("#listaAmigos tbody");
+    tbody.innerHTML = "";
+
+    for (const amigo of amigos) {
+        const amigoAlvo = (amigo.id_jogador_1 == usuarioSalvo.id) ?
+            await GetUsuarioID(amigo.id_jogador_2) : await GetUsuarioID(amigo.id_jogador_1);
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${amigoAlvo.id}</td>
+            <td>${amigoAlvo.nome}</td>
+            <td><img src="../Assets/Icon/mensagemIcon.png" onclick="mensagem(${amigoAlvo.id})" class="imgAmigo"></td>
+        `;
+
+        tbody.appendChild(tr);
+    }
+});
+
+async function listarAmigos() {
+    return await GetTodasAmizadasFeitasJogador(usuarioSalvo.id);
+}
+
+function mensagem(idAlvo) {
+    console.log("mensagem para " + idAlvo);
+
+    id = idAlvo;
+
+    const data = new Date();
+    data.setHours(data.getHours() + 1);
+
+    document.cookie = `mensagemAmg=${idAlvo}; expires=${data.toUTCString()}; path=/`;
+    location.reload();
+}
+
+function getMensagemDoCookie() {
+    const cookies = document.cookie.split('; ');
+
+    for (let i = 0; i < cookies.length; i++) {
+        const [chave, valor] = cookies[i].split('=');
+        if (chave === 'mensagemAmg') {
+            try {
+                return JSON.parse(decodeURIComponent(valor));
+            } catch (e) {
+                console.error("Erro ao converter cookie 'mensagemAmg': ", e);
+                return null;
+            }
+        }
+    }
+
+    return null;
+}
+
+window.mensagem = mensagem;

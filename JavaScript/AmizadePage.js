@@ -74,7 +74,6 @@ carregarTodosUsuarios().then(usuarios => {
             tr.innerHTML = `
                 <td>${usuario.id}</td>
                 <td>${usuario.nome}</td>
-                <td><img src="../Assets/Icon/mensagemIcon.png" onclick="mandarMensagem(${usuario.id})" class="imgAmigo"></td>
                 <td><img src="../Assets/Icon/adicionarAmigoIcon.png" onclick="adicionarAmigoPendente(${usuario.id})" class="imgAmigo"></td>
             `;
 
@@ -170,7 +169,11 @@ async function verAmigos() {
     return amizadesFeitas;
 }
 
-function mandarMensagem(id) {
+function mandarMensagem(idAmizade) {
+    const data = new Date();
+    data.setHours(data.getHours() + 1);
+
+    document.cookie = `mensagemAmg=${idAmizade}; expires=${data.toUTCString()}; path=/`;
     window.location.href = "../Pages/ChatPage.html";
 }
 

@@ -26,7 +26,7 @@ function fecharPopupSair() {
 }
 
 function sair() {
-    UsuarioManager.limparSessao();
+    apagarTodosCookies();
     window.location.href = "LoginPage.html";
 }
 
@@ -48,6 +48,15 @@ function conversar() {
 
 function configurar() {
     console.log("Configurar");
+}
+
+function apagarTodosCookies() {
+    const cookies = document.cookie.split(";");
+
+    for (let cookie of cookies) {
+        const nome = cookie.split("=")[0].trim();
+        document.cookie = nome + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
 }
 
 async function mudarFoto() {

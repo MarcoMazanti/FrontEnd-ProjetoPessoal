@@ -14,3 +14,113 @@ main {
     text-align: center;
     padding: 50px 0 50px 0;
 }
+
+hr {
+    height: 2px;
+    background-color: black;
+    border: none;
+}
+
+#ChatPage {
+    width: 100%;
+    display: grid;
+    grid-template-areas: "left center right";
+    grid-auto-columns: 28% 4% 68%;
+    justify-content: center;
+}
+
+#left {
+    grid-area: left;
+    background-color: gray;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 20px;
+}
+
+#center {
+    grid-area: center;
+}
+
+#right {
+    grid-area: right;
+    background-color: gray;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 25px;
+}
+
+#chat {
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228, 228, 228, 0.96);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    position: relative;
+}
+
+#listaAmigos {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#listaAmigos thead {
+    background-color: #424242;
+    color: #e6e6e6;
+    height: 30px;
+}
+
+#listaAmigos tbody {
+    color: black;
+}
+
+#listaAmigos tbody tr {
+    height: 25px;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+#listaAmigos tbody tr:nth-child(even) {
+    background-color: #e6e6e6;
+}
+
+#listaAmigos tbody tr:nth-child(odd) {
+    background-color: #bdbdbd;
+}
+
+.imgAmigo {
+    width: 20px;
+    height: 20px;
+}
+
+.imgAmigo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.box {
+    margin: 10px 10px 0 10px;
+    width: 60%;
+    padding: 10px;
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.mensagem {
+    display: block;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.amigo {
+    background-color: lightslategray;
+}
+
+.usuario {
+    background-color: dimgray;
+    margin-left: auto;
+}
