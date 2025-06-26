@@ -35,14 +35,8 @@ export function postMensagem(idAmizade, mensagem) {
 }
 
 export function deleteConversa(idAmizade) {
-    const body = JSON.stringify({
-        idAmizade : idAmizade
-    });
-
-    fetch('http://localhost:8080/api/conversa', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: body
+    fetch(`http://localhost:8080/api/conversa/${idAmizade}`, {
+        method: 'DELETE'
     })
         .then(resposta => resposta.text())
         .then(usuario => console.log(usuario))

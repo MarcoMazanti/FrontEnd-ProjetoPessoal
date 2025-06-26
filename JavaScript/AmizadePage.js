@@ -1,12 +1,13 @@
 import UsuarioManager from "./Models/Usuario.js";
-import {GetTodosUsuarios, GetUsuarioID, GetUsuarioNome} from "../Service/ConectarUsuario.js";
+import {GetTodosUsuarios, GetUsuarioID} from "../Service/ConectarUsuario.js";
 import {
-    DeleteAmizade,
+    DeleteAmizade, GetIDAmizade,
     GetTodasAmizadasFeitasJogador,
     GetTodasAmizades,
     GetTodasAmizadesPendentesJogador,
     PostNovaAmizade, PutAtualizarAmizade
 } from "../Service/ControllerAmizade.js";
+import {deleteConversa} from "../Service/ControllerConversa.js";
 
 const usuarioSalvo = UsuarioManager.getUsuarioLogado();
 let todosUsuarios = [];
@@ -115,7 +116,7 @@ amigosPendentes().then(async amigosPendentes => {
             <td>${usuarioAlvo.id}</td>
             <td>${usuarioAlvo.nome}</td>
             <td><img src="../Assets/Icon/adicionarAmigoIcon.png" onclick="adicionarAmigo(${usuarioAlvo.id})" class="imgAmigo"></td>
-            <td><img src="../Assets/Icon/deleteIcon.png" onclick="cancelarAmizade(${usuarioAlvo.id})" class="imgAmigo"></td>
+            <td><img src="../Assets/Icon/deleteIcon.png" onclick="cancelarPedidoAmizade(${usuarioAlvo.id})" class="imgAmigo"></td>
         `;
 
         tbody.appendChild(tr);
@@ -193,9 +194,19 @@ async function adicionarAmigo(id1) {
     window.location.reload();
 }
 
-async function cancelarAmizade(id1) {
+async function cancelarPedidoAmizade(id1) {
     const id2 = usuarioSalvo.id;
 
+    await DeleteAmizade(id1, id2);
+
+    window.location.reload();
+}
+
+async function cancelarAmizade(id1) {
+    const id2 = usuarioSalvo.id;
+    const idAmizade = await GetIDAmizade(id1);
+
+    deleteConversa(idAmizade);
     await DeleteAmizade(id1, id2);
 
     window.location.reload();
@@ -261,4 +272,5 @@ function ehSomenteNumeros(valor) {
 window.mandarMensagem = mandarMensagem;
 window.adicionarAmigoPendente = adicionarAmigoPendente;
 window.adicionarAmigo = adicionarAmigo;
+window.cancelarPedidoAmizade = cancelarPedidoAmizade;
 window.cancelarAmizade = cancelarAmizade;

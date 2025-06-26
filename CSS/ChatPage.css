@@ -21,6 +21,34 @@ hr {
     border: none;
 }
 
+input {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 30px;
+    width: 50%;
+}
+
+button {
+    background-color: rgba(228, 228, 228, 0.96);
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 30px;
+    width: 150px;
+    padding: 10px;
+    line-height: 10px;
+    transition: all 0.3s;
+    margin-left: 5px;
+}
+
+button:hover {
+    cursor: hand;
+    transform: scale(1.1);
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
 #ChatPage {
     width: 100%;
     display: grid;
@@ -46,7 +74,22 @@ hr {
     background-color: gray;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    padding: 25px;
+    padding: 25px 25px 0 25px;
+
+    display: grid;
+    grid-template-areas: "up" "down";
+    grid-auto-rows: 80% 20%;
+}
+
+#up {
+    grid-area: up;
+}
+
+#down {
+    grid-area: down;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #chat {
@@ -58,6 +101,10 @@ hr {
     display: flex;
     flex-direction: column;
     overflow: auto;
+}
+
+#boxMensagem {
+    width: 100%;
 }
 
 #listaAmigos {

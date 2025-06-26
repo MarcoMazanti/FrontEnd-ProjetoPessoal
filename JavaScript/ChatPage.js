@@ -1,7 +1,7 @@
 import UsuarioManager from "./Models/Usuario.js";
 import {GetIDAmizade, GetTodasAmizadasFeitasJogador} from "../Service/ControllerAmizade.js";
 import {GetUsuarioID} from "../Service/ConectarUsuario.js";
-import {getConversaUsuario} from "../Service/ControllerConversa.js";
+import {getConversaUsuario, postMensagem} from "../Service/ControllerConversa.js";
 
 const usuarioSalvo = UsuarioManager.getUsuarioLogado();
 let id = getMensagemDoCookie();
@@ -44,6 +44,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
+document.getElementById("formMensagem").addEventListener("submit",  async function (event) {
+    const mensagemEscrita = document.getElementById("txtMensagem").value.trim();
+
+    if (mensagemEscrita) {
+        const idAmizade = await GetIDAmizade(id);
+        postMensagem(idAmizade, mensagemEscrita);
+    } else {
+        alert("Digite uma mensagem!");
+    }
+});
 
 if (id != null) {
     const idAmizade = await GetIDAmizade(id);
@@ -71,9 +81,10 @@ if (id != null) {
     });
 
     document.getElementById("chat").style.visibility = "visible";
+    document.getElementById("boxMensagem").style.visibility = "visible";
 } else {
-    console.log("entrou");
     document.getElementById("chat").style.visibility = "hidden";
+    document.getElementById("boxMensagem").style.visibility = "hidden";
 }
 
 listarAmigos().then(async amigos => {
