@@ -1,4 +1,7 @@
 import {Amizade} from "../JavaScript/Models/Amizade.js";
+import UsuarioManager from "../JavaScript/Models/Usuario.js";
+
+const usuarioSalvo = UsuarioManager.getUsuarioLogado();
 
 export async function GetTodasAmizades() {
     const resposta = await fetch('http://localhost:8080/api/amizade/todos', {
@@ -68,6 +71,22 @@ export async function GetTodasAmizadasFeitasJogador(id) {
     const data = await resposta.json();
 
     return Amizade.formatBackEndList(data);
+}
+
+export async function GetIDAmizade(idAmigo) {
+    const resposta = await fetch('http://localhost:8080/api/amizade/IDAmizade/' + idAmigo + '/' + usuarioSalvo.id, {
+        method: 'GET'
+    });
+
+    if (!resposta.ok) {
+        throw new Error("Erro ao pegar o ID da amizade");
+    }
+
+    const data = await resposta.json();
+
+    const amizade = Amizade.formatBackEndData(data);
+
+    return amizade.id_amizade;
 }
 
 export function PostNovaAmizade(idEmissor, idReceptor) {

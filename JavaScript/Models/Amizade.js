@@ -1,17 +1,17 @@
 export class Amizade {
-    constructor(id, id_jogador_1, id_jogador_2, amizade_pendente) {
+    constructor(id_amizade, id_jogador_1, id_jogador_2, amizade_pendente) {
+        this._id_amizade = id_amizade;
         this._id_jogador_1 = id_jogador_1;
         this._id_jogador_2 = id_jogador_2;
         this._amizade_pendente = amizade_pendente;
-        this._id = id;
     }
 
-    get id() {
-        return this._id;
+    get id_amizade() {
+        return this._id_amizade;
     }
 
-    set id(value) {
-        this._id = value;
+    set id_amizade(value) {
+        this._id_amizade = value;
     }
 
     get id_jogador_1() {
@@ -39,7 +39,7 @@ export class Amizade {
     }
 
     static formatBackEndData(backEndData) {
-        const idAmizade = backEndData.id;
+        const idAmizade = backEndData.id_amizade;
         const id1 = backEndData.id_jogador_1;
         const id2 = backEndData.id_jogador_2;
         const pendencia = backEndData.amizade_pendente;
@@ -48,6 +48,8 @@ export class Amizade {
     }
 
     static formatBackEndList(backEndList) {
-        return backEndList.map((backEndData) => this.formatBackEndData(backEndData));
+        return Array.isArray(backEndList)
+            ? backEndList.map((backEndData) => this.formatBackEndData(backEndData))
+            : [];
     }
 }

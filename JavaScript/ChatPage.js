@@ -1,6 +1,7 @@
 import UsuarioManager from "./Models/Usuario.js";
-import {GetTodasAmizadasFeitasJogador} from "../Service/ControllerAmizade.js";
+import {GetIDAmizade, GetTodasAmizadasFeitasJogador} from "../Service/ControllerAmizade.js";
 import {GetUsuarioID} from "../Service/ConectarUsuario.js";
+import {getConversaUsuario} from "../Service/ControllerConversa.js";
 
 const usuarioSalvo = UsuarioManager.getUsuarioLogado();
 let id = getMensagemDoCookie();
@@ -45,8 +46,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 if (id != null) {
+    const idAmizade = await GetIDAmizade(id);
+
+    await getConversaUsuario(idAmizade).then(async conversa => {
+        const tbody = document.querySelector("#chat");
+        tbody.innerHTML = "";
+
+        for (const mensagem of conversa) {
+            const div = document.createElement("div");
+            div.classList.add("box");
+
+            if (mensagem.idJogador == usuarioSalvo.id) {
+                div.classList.add("usuario");
+            } else {
+                div.classList.add("amigo");
+            }
+
+            div.innerHTML = `
+                <label class="mensagem">${mensagem.mensagem}</label>
+            `;
+
+            tbody.appendChild(div);
+        }
+    });
+
     document.getElementById("chat").style.visibility = "visible";
 } else {
+    console.log("entrou");
     document.getElementById("chat").style.visibility = "hidden";
 }
 
@@ -74,10 +100,6 @@ async function listarAmigos() {
 }
 
 function mensagem(idAlvo) {
-    console.log("mensagem para " + idAlvo);
-
-    id = idAlvo;
-
     const data = new Date();
     data.setHours(data.getHours() + 1);
 

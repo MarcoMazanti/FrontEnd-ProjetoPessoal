@@ -58,7 +58,6 @@ hr {
     display: flex;
     flex-direction: column;
     overflow: auto;
-    position: relative;
 }
 
 #listaAmigos {
