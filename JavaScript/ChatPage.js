@@ -5,7 +5,6 @@ import {getConversaUsuario, postMensagem} from "../Service/ControllerConversa.js
 
 const usuarioSalvo = UsuarioManager.getUsuarioLogado();
 let id = getMensagemDoCookie();
-console.log(id);
 
 document.addEventListener("DOMContentLoaded", function () {
     // Carrega o HTML do Header dinamicamente

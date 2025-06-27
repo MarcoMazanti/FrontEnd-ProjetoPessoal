@@ -1,14 +1,10 @@
 export class Usuario {
-    constructor(id, nome, email, imagem, pontuacao, jogosParticipados, vitorias, empates, derrotas){
+    constructor(id, nome, email, imagem, pontuacao){
         this._id = id;
         this._nome = nome;
         this._email = email;
         this._imagem = imagem;
         this._pontuacao = pontuacao;
-        this._jogosParticipados = jogosParticipados;
-        this._vitorias = vitorias;
-        this._empates = empates;
-        this._derrotas = derrotas;
     }
 
     get id() {
@@ -31,34 +27,14 @@ export class Usuario {
         return this._pontuacao;
     }
 
-    get jogosParticipados() {
-        return this._jogosParticipados;
-    }
-
-    get vitorias() {
-        return this._vitorias;
-    }
-
-    get empates() {
-        return this._empates;
-    }
-
-    get derrotas() {
-        return this._derrotas;
-    }
-
     static formatBackEndData(backEndData) {
         const id = backEndData.id;
         const nome = backEndData.nome;
         const email = backEndData.email;
         const imagem = backEndData.imagem;
         const pontuacao = backEndData.pontuacao;
-        const jogosParticipados = backEndData.jogosParticipados;
-        const vitorias = backEndData.vitorias;
-        const empates = backEndData.empates;
-        const derrotas = backEndData.derrotas;
 
-        return new Usuario(id, nome, email, imagem, pontuacao, jogosParticipados, vitorias, empates, derrotas);
+        return new Usuario(id, nome, email, imagem, pontuacao);
     }
 
     static formatBackEndList(backEndList) {
@@ -70,19 +46,15 @@ export class Usuario {
 class UsuarioManager {
     static usuarioLogado = null;
 
-    static setUsuarioLogado(id, nome, email, imagem, pontuacao, jogosParticipados, vitorias, empates, derrotas) {
-        this.usuarioLogado = new Usuario(id, nome, email, imagem, pontuacao, jogosParticipados, vitorias, empates, derrotas);
+    static setUsuarioLogado(id, nome, email, imagem, pontuacao) {
+        this.usuarioLogado = new Usuario(id, nome, email, imagem, pontuacao);
 
         // Criar um objeto simples com as propriedades que quer salvar no cookie
         const dados = {
             id: this.usuarioLogado._id,
             nome: this.usuarioLogado._nome,
             email: this.usuarioLogado._email,
-            pontuacao: this.usuarioLogado._pontuacao,
-            jogosParticipados: this.usuarioLogado._jogosParticipados,
-            vitorias: this.usuarioLogado._vitorias,
-            empates: this.usuarioLogado._empates,
-            derrotas: this.usuarioLogado._derrotas
+            pontuacao: this.usuarioLogado._pontuacao
         };
 
         // Converter para JSON e codificar para o cookie
@@ -104,11 +76,7 @@ class UsuarioManager {
                 dadosUsuario.nome,
                 dadosUsuario.email,
                 dadosUsuario.imagem,
-                dadosUsuario.pontuacao,
-                dadosUsuario.jogosParticipados,
-                dadosUsuario.vitorias,
-                dadosUsuario.empates,
-                dadosUsuario.derrotas
+                dadosUsuario.pontuacao
             );
         } else {
             console.log("Cookie não encontrado ou inválido.");

@@ -1,8 +1,7 @@
 export class RankingUsuario {
-    constructor(id, nome, vitorias, pontuacao, ranking) {
+    constructor(id, nome, pontuacao, ranking) {
         this._id = id;
         this._nome = nome;
-        this._vitorias = vitorias;
         this._pontuacao = pontuacao;
         this._ranking = ranking;
     }
@@ -22,14 +21,6 @@ export class RankingUsuario {
 
     set nome(value) {
         this._nome = value;
-    }
-
-    get vitorias() {
-        return this._vitorias;
-    }
-
-    set vitorias(value) {
-        this._vitorias = value;
     }
 
     get pontuacao() {

@@ -1,8 +1,15 @@
 # FrontEnd
 - - -
-## Site para Jogar Xadrez
+## Site para Jogar Campo Minado
 
-### Objetivos
+### Objetivos Primários
+- [X] Aprender a Manusear Requisições HTTP
+- [X] Aprender a Lógica de uma API
+
+### Objetivos Secundários
+- [X] Conhecer mais sobre a Programação do FrontEnd
+
+### Objetivos Tericários
 - [X] Criar a página de Login
 - [X] Criar PopUp de Cadastro
 - [X] Utilizar Fetch
@@ -10,9 +17,9 @@
 - [X] Adicionar uma Lista de Ranking
 - [X] Adicionar as Estatísticas Pessoas
 - [X] Pagina para Adicionar e Buscar Amigos
-- [ ] Adicionar um Gráfico de Vitórias e Derrotas com o Tempo
+- [X] Página para Chat com o Amigo
 - [ ] Criar a página de Jogo
-- [ ] Possuir Chat ao Vivo
+- [ ] Criar Modos de Jogos Distintos
 
 ### Tecnologias
 - HTML

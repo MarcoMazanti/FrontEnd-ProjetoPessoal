@@ -58,7 +58,6 @@ getRankingTodos().then(jogadores => {
             <td>${contador}</td>
             <td>${jogador.id}</td>
             <td>${jogador.nome}</td>
-            <td>${jogador.vitorias}</td>
             <td>${jogador.pontuacao}</td>
         `;
 
@@ -94,10 +93,6 @@ async function carregarInfoJogador() {
     document.getElementById("nomeJogador").textContent = usuarioSalvo.nome;
     document.getElementById("pontuacaoJogador").textContent = usuarioSalvo.pontuacao;
     document.getElementById("rankingJogador").textContent = rankingUsuario.ranking;
-    document.getElementById("jogosParticipadosJogador").textContent = usuarioSalvo.jogosParticipados;
-    document.getElementById("vitoriasJogador").textContent = usuarioSalvo.vitorias;
-    document.getElementById("empatesJogador").textContent = usuarioSalvo.empates;
-    document.getElementById("derrotasJogador").textContent = usuarioSalvo.derrotas;
 }
 
 carregarInfoJogador();

@@ -20,7 +20,7 @@ export async function PostLogin(email, senha) {
 
         const data = await resposta.json();
 
-        return new Usuario(data.id, data.nome, data.email, data.imagem, data.pontuacao, data.jogosParticipados, data.vitorias, data.empates, data.derrotas);
+        return new Usuario(data.id, data.nome, data.email, data.imagem, data.pontuacao);
 
     } catch (error) {
         console.error(error);
@@ -103,7 +103,7 @@ export async function GetUsuario(email) {
         }
 
         const data = await resposta.json();
-        return new Usuario(data.id, data.nome, data.email, data.imagem, data.pontuacao, data.jogosParticipados, data.vitorias, data.empates, data.derrotas);
+        return new Usuario(data.id, data.nome, data.email, data.imagem, data.pontuacao);
     } catch (error) {
         console.error(error);
         return null;
@@ -126,7 +126,7 @@ export async function GetUsuarioID(id) {
             console.warn("Erro ao getUsuarioID");
             return null;
         } else {
-            return new Usuario(data.id, data.nome, data.email, data.imagem, data.pontuacao, data.jogosParticipados, data.vitorias, data.empates, data.derrotas);
+            return new Usuario(data.id, data.nome, data.email, data.imagem, data.pontuacao);
         }
     } catch (error) {
         console.error(error);

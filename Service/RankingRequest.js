@@ -28,7 +28,7 @@ export async function getRanking(id) {
         }
 
         const data = await resposta.json();
-        return new RankingUsuario(data.id, data.nome, data.vitorias, data.pontuacao, data.ranking);
+        return new RankingUsuario(data.id, data.nome, data.pontuacao, data.ranking);
     } catch (error) {
         console.error(error);
         return null;
