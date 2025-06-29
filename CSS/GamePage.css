@@ -70,7 +70,7 @@ hr {
 
 .numCabecalho {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 #tabela {
@@ -80,10 +80,9 @@ hr {
 }
 
 .celulaPadrao {
-    width: 7px;
-    height: 7px;
-    background-color: rgba(177, 177, 177, 0.69);
-    border: 2px outset black;
+    width: 17px;
+    height: 17px;
+    background-color: rgba(204, 204, 204, 0.69);
     transition: active 0.3s;
 }
 
@@ -96,8 +95,17 @@ hr {
 }
 
 .celulaClicada {
-    width: 7px;
-    height: 7px;
+    width: 17px;
+    height: 17px;
     background-color: white;
-    border: 2px outset white;
+}
+
+.textoCelula {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.imgCelula {
+    width: 12px;
+    height: 12px;
 }

@@ -1,28 +1,5 @@
 import UsuarioManager from "./Models/Usuario.js";
-
-const usuarioLogado = UsuarioManager.getUsuarioLogado();
-const numBomb = document.getElementById("numBomb");
-const tamanhoMapa = document.getElementById("tamanhoMapa");
-
-const params = new URLSearchParams(window.location.search);
-const idJogo = params.get("id");
-console.log(idJogo);
-
-const largura = 20;
-const altura = 20;
-
-tamanhoMapa.textContent = `${largura}x${altura}`;
-
-for (let i = 0; i < altura; i++) {
-    const tbody = document.querySelector("#tabela tbody");
-    const tr = document.createElement("tr");
-
-    for (let j = 0; j < largura; j++) {
-        const id = `celula${i}x${j}`;
-        tr.innerHTML += `<td id = ${id} class="celulaPadrao" onclick="celulaClicada(${id})"></td>`;
-    }
-    tbody.appendChild(tr);
-}
+import {getCondicaoCelula, getDadosMapa} from "../Service/ControllerJogo.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     // Carrega o HTML do Header dinamicamente
@@ -44,9 +21,127 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
-function celulaClicada(td) {
+const usuarioLogado = UsuarioManager.getUsuarioLogado();
+const numBomb = document.getElementById("numBomb");
+const tamanhoMapa = document.getElementById("tamanhoMapa");
+
+const params = new URLSearchParams(window.location.search);
+const idJogo = params.get("id");
+
+const dadosMapa = await getDadosMapa();
+
+const largura = dadosMapa.largura;
+const altura = dadosMapa.altura;
+
+let mapa = [];
+
+for (let i = 0; i < altura; i++) {
+    mapa[i] = [];
+    for (let j = 0; j < largura; j++) {
+        mapa[i][j] = null;
+    }
+}
+
+numBomb.textContent = dadosMapa.quantBombas;
+tamanhoMapa.textContent = `${altura}x${largura}`;
+
+const tbody = document.querySelector("#tabela tbody");
+
+for (let i = 0; i < altura; i++) {
+    const tr = document.createElement("tr");
+
+    for (let j = 0; j < largura; j++) {
+        const td = document.createElement("td");
+        td.id = `celula${i}x${j}`;
+        td.className = "celulaPadrao";
+
+        td.addEventListener("mousedown", function (event) {
+            event.preventDefault();
+            const label = td.querySelector("label");
+            const img = td.querySelector("img");
+
+            if (
+                event.button === 0 &&
+                !(img && img.alt === "bandeira")) {
+                celulaClicada(td);
+
+            } else if (
+                event.button === 2 &&
+                !(label || (img && img.alt === "bomba"))
+            ) {
+                clickDireitoCelula(td);
+            }
+
+        });
+
+        tr.appendChild(td);
+    }
+
+    tbody.appendChild(tr);
+}
+
+
+async function clickDireitoCelula(td) {
+    if (td.classList.contains("celulaPadrao")) {
+        td.classList.remove("celulaPadrao");
+        td.classList.add("celulaClicada");
+
+        td.innerHTML = "";
+
+        td.innerHTML = `<img src="../Assets/Icon/bandeiraIcon.png" alt="bandeira" class="imgCelula">`;
+    } else {
+        td.classList.remove("celulaClicada");
+        td.classList.add("celulaPadrao");
+
+        td.innerHTML = "";
+    }
+}
+
+async function celulaClicada(td) {
     td.classList.remove("celulaPadrao");
     td.classList.add("celulaClicada");
+
+    let idCompletoCelula = td.getAttribute("id");
+
+    idCompletoCelula = idCompletoCelula.replace("celula", "");
+     let [i, j] = idCompletoCelula.split("x");
+
+     i = parseInt(i);
+     j = parseInt(j);
+
+    const numCelula = await getCondicaoCelula(i, j);
+
+    await verificacaoCelulas(td, numCelula, i, j);
+}
+
+async function verificacaoCelulas(td, numCelula, linha, coluna) {
+    td.innerHTML = "";
+
+    td.classList.add("celulaClicada");
+    if (numCelula < 10) {
+        if (numCelula === 0) {
+            for (let i = -1; i < 2; i++) {
+                for (let j = -1; j < 2; j++) {
+                    let ni = linha + i;  // Posição atual + deslocamento
+                    let nj = coluna + j;
+
+                    if (ni >= 0 && ni < altura && nj >= 0 && nj < largura) {
+                        const nomeCelula = `celula${ni}x${nj}`;
+                        const celulaAtual = document.getElementById(nomeCelula);
+
+                        if (celulaAtual.className === "celulaPadrao") {
+                            let novaCondicao = await getCondicaoCelula(ni, nj);
+                            await verificacaoCelulas(celulaAtual, novaCondicao, ni, nj);
+                        }
+                    }
+                }
+            }
+        } else {
+            td.innerHTML = `<label class="textoCelula">${numCelula}</label>`;
+        }
+    } else {
+        td.innerHTML = `<img src="../Assets/Icon/bombIcon.png" alt="bomba" class="imgCelula">`;
+    }
 }
 
 window.celulaClicada = celulaClicada;

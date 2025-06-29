@@ -4,7 +4,6 @@ import {getJogoAndamento, postNovoJogo} from "../Service/ControllerJogo.js";
 
 const usuarioSalvo = UsuarioManager.getUsuarioLogado();
 
-
 document.addEventListener("DOMContentLoaded", function () {
     // Carrega o HTML do Header dinamicamente
     fetch("../Pages/Header.html")
@@ -49,17 +48,14 @@ document.getElementById("btnCancelar").addEventListener("click", fecharPopup)
 async function jogar() {
     const possivelJogo = await getJogoAndamento();
 
-    console.log(possivelJogo);
-
     if (possivelJogo) {
         window.location.href=`../Pages/GamePage.html?id=${possivelJogo.id}`;
     } else {
-        console.log("Deve criar um novo Jogo");
         abrirPopup();
     }
 }
 
-function abrirJogo() {
+async function abrirJogo() {
     const radiosTamanho = document.querySelectorAll('input[name="tamanhoCampo"]');
 
     let tamanhoSelecionado = null;
@@ -105,8 +101,9 @@ function abrirJogo() {
         porcentMina = document.getElementById("percent").value;
     }
 
-    postNovoJogo();
+    postNovoJogo(altura, largura, porcentMina);
     fecharPopup();
+    await jogar();
 }
 
 // edição da lista de Ranking

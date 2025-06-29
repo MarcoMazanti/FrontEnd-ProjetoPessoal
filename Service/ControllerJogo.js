@@ -1,5 +1,6 @@
 import UsuarioManager from "../JavaScript/Models/Usuario.js";
 import {Jogo} from "../JavaScript/Models/Jogo.js";
+import {DadosJogo} from "../JavaScript/Models/DadosJogo.js";
 
 const usuarioSalvo = UsuarioManager.getUsuarioLogado();
 
@@ -25,23 +26,47 @@ export async function getJogoAndamento() {
         throw new Error("Erro ao Pegar os Jogos");
     }
 
-    const data = await resposta.json();
-    if (data) {
+    const texto = await resposta.text();
+
+    if (texto) {
+        const data = JSON.parse(texto);
         return Jogo.formatBackEndData(data);
     } else {
         return null;
     }
 }
 
-export function postNovoJogo() {
-    fetch(`http://localhost:8080/api/jogo/${usuarioSalvo.id}`, {
+export async function getDadosMapa() {
+    const resposta = await fetch("http://localhost:8080/api/jogo/partida/" + usuarioSalvo.id, {
+        method: "GET"
+    });
+
+    if (!resposta) {
+        throw new Error("Erro ao Pegar os Jogos");
+    }
+
+    const data = await resposta.json();
+    return new DadosJogo(data.altura, data.largura, data.quantBombas);
+}
+
+export async function getCondicaoCelula(altura, largura) {
+    const resposta = await fetch(`http://localhost:8080/api/jogo/partida/celula/${usuarioSalvo.id}/${altura}/${largura}`, {
+        method: "GET"
+    });
+
+    if (!resposta) {
+        throw new Error("Erro ao Pegar os Jogos");
+    }
+
+    return await resposta.json();
+}
+
+export function postNovoJogo(altura, largura, dificuldade) {
+    fetch(`http://localhost:8080/api/jogo/${usuarioSalvo.id}/${altura}/${largura}/${dificuldade}`, {
         method: 'POST'
     })
         .then(resposta => {
             resposta.text();
-            if (resposta.status === 400) {
-                alert("O Usuário já está em um Jogo!");
-            }
         })
         .then(usuario => console.log(usuario))
         .catch(error => console.log(error));
