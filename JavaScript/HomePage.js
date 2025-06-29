@@ -1,7 +1,9 @@
 import UsuarioManager from "./Models/Usuario.js";
 import {getRanking, getRankingTodos} from "../Service/RankingRequest.js";
+import {getJogoAndamento, postNovoJogo} from "../Service/ControllerJogo.js";
 
 const usuarioSalvo = UsuarioManager.getUsuarioLogado();
+
 
 document.addEventListener("DOMContentLoaded", function () {
     // Carrega o HTML do Header dinamicamente
@@ -41,9 +43,70 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.getElementById("jogarBtn").addEventListener("click", jogar);
+document.getElementById("btnJogar").addEventListener("click", abrirJogo);
+document.getElementById("btnCancelar").addEventListener("click", fecharPopup)
 
-function jogar() {
-    console.log("Jogar");
+async function jogar() {
+    const possivelJogo = await getJogoAndamento();
+
+    console.log(possivelJogo);
+
+    if (possivelJogo) {
+        window.location.href=`../Pages/GamePage.html?id=${possivelJogo.id}`;
+    } else {
+        console.log("Deve criar um novo Jogo");
+        abrirPopup();
+    }
+}
+
+function abrirJogo() {
+    const radiosTamanho = document.querySelectorAll('input[name="tamanhoCampo"]');
+
+    let tamanhoSelecionado = null;
+    radiosTamanho.forEach(radio => {
+        if (radio.checked) {
+            tamanhoSelecionado = radio.value;
+        }
+    });
+
+    let altura;
+    let largura;
+    if (tamanhoSelecionado === "10x10") {
+        altura = 10;
+        largura = 10;
+    } else if (tamanhoSelecionado === "20x20") {
+        altura = 20;
+        largura = 20;
+    } else if (tamanhoSelecionado === "30x30") {
+        altura = 30;
+        largura = 30;
+    } else {
+        altura = document.getElementById("altura").value;
+        largura = document.getElementById("largura").value;
+    }
+
+    const radiosDificuldade = document.querySelectorAll('input[name="dificuldade"]');
+
+    let dificuldadeSelecionada = null;
+    radiosDificuldade.forEach(radio => {
+        if (radio.checked) {
+            dificuldadeSelecionada = radio.value;
+        }
+    });
+
+    let porcentMina;
+    if (dificuldadeSelecionada === "facil") {
+        porcentMina = 15;
+    } else if (dificuldadeSelecionada === "medio") {
+        porcentMina = 25;
+    } else if (dificuldadeSelecionada === "dificil") {
+        porcentMina = 35;
+    } else {
+        porcentMina = document.getElementById("percent").value;
+    }
+
+    postNovoJogo();
+    fecharPopup();
 }
 
 // edição da lista de Ranking
@@ -93,6 +156,14 @@ async function carregarInfoJogador() {
     document.getElementById("nomeJogador").textContent = usuarioSalvo.nome;
     document.getElementById("pontuacaoJogador").textContent = usuarioSalvo.pontuacao;
     document.getElementById("rankingJogador").textContent = rankingUsuario.ranking;
+}
+
+function abrirPopup() {
+    document.getElementById("popupOverlay").classList.add("active");
+}
+
+function fecharPopup() {
+    document.getElementById("popupOverlay").classList.remove("active");
 }
 
 carregarInfoJogador();

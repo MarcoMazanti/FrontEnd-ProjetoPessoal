@@ -87,6 +87,89 @@
                 </div>
             </div>
         </div>
+
+        <div id="popupOverlay" class="overlay">
+            <div id="popup">
+                <div id="cabecalhoJogar">
+                    <h3>Configurar Campo Minado</h3>
+                </div>
+                <div id="tamanhoCampo">
+                    <fieldset>
+                        <legend>Tamanho do Campo</legend>
+
+                        <div class="leftGame">
+                            <label>
+                                <input type="radio" name="tamanhoCampo" value="10x10">
+                                10 × 10
+                            </label><br>
+
+                            <label>
+                                <input type="radio" name="tamanhoCampo" value="20x20">
+                                20 × 20
+                            </label><br>
+
+                            <label>
+                                <input type="radio" name="tamanhoCampo" value="30x30">
+                                30 × 30
+                            </label><br>
+
+                            <label>
+                                <input type="radio" name="tamanhoCampo" value="personalizado" checked>
+                                Personalizado
+                            </label>
+                        </div>
+                        <div class="rightGame">
+                            <div id="tamanhoPersonalizado">
+                                <label>Altura:  </label>
+                                <input type="number" id="altura" name="altura" min="10" max="50" value="10" class="inputPersonalizado"><br>
+
+                                <br>
+
+                                <label>Largura: </label>
+                                <input type="number" id="largura" name="largura" min="10" max="50" value="10" class="inputPersonalizado"><br>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div id="dificuldadeCampo">
+                    <fieldset>
+                        <legend>Dificuldade</legend>
+
+                        <div class="leftGame">
+                            <label>
+                                <input type="radio" name="dificuldade" value="facil">
+                                Fácil - 15%
+                            </label><br>
+
+                            <label>
+                                <input type="radio" name="dificuldade" value="medio">
+                                Médio - 25%
+                            </label><br>
+
+                            <label>
+                                <input type="radio" name="dificuldade" value="dificil">
+                                Difícil - 35%
+                            </label><br>
+
+                            <label>
+                                <input type="radio" name="dificuldade" value="personalizado" checked>
+                                Personalizado
+                            </label>
+                        </div>
+                        <div class="rightGame">
+                            <div id="dificuldadePersonalizada">
+                                <label>Porcentagem de Minas: </label>
+                                <input type="number" id="percent" name="percent" min="10" max="90" value="10" class="inputPersonalizado" style="width: 85%">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div id="btns">
+                    <button type="submit" id="btnJogar" class="btnJogar">Jogar</button>
+                    <button type="reset" id="btnCancelar" class="btnJogar">Cancelar</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer id="Footer"></footer>

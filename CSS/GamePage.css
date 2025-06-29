@@ -1,0 +1,103 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: rgba(228, 228, 228, 0.96);
+    font-family: Arial, sans-serif;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 25px 0 25px 0;
+}
+
+hr {
+    height: 2px;
+    background-color: black;
+    border: none;
+}
+
+#boxJogo {
+    display: grid;
+    justify-content: stretch;
+    background-color: gray;
+    border-radius: 20px;
+    padding: 30px;
+    grid-template-areas: "dados" "meio" "jogo";
+    gap: 10px;
+    width: 50%;
+    min-width: 450px;
+}
+
+#dados {
+    width: 100%;
+    grid-area: dados;
+    display: grid;
+    grid-template-areas: "dadosBomba titulo tamanho";
+    grid-auto-columns: 20% 60% 20%;
+}
+
+#meio {
+    grid-area: meio;
+    width: 100%;
+}
+
+#jogo {
+    grid-area: jogo;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(228, 228, 228, 0.96);
+    border: outset black;
+    min-width: 90px;
+}
+
+#bomb {
+    width: 40px;
+    height: 40px;
+}
+
+.numCabecalho {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#tabela {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.celulaPadrao {
+    width: 7px;
+    height: 7px;
+    background-color: rgba(177, 177, 177, 0.69);
+    border: 2px outset black;
+    transition: active 0.3s;
+}
+
+.celulaPadrao:hover {
+    background-color: rgba(237, 237, 237, 0.93);
+}
+
+.celulaPadrao:active {
+    transform: scale(0.9);
+}
+
+.celulaClicada {
+    width: 7px;
+    height: 7px;
+    background-color: white;
+    border: 2px outset white;
+}
