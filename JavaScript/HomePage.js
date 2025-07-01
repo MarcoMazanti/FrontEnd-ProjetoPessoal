@@ -49,7 +49,7 @@ async function jogar() {
     const possivelJogo = await getJogoAndamento();
 
     if (possivelJogo) {
-        window.location.href=`../Pages/GamePage.html?id=${possivelJogo.id}`;
+        window.location.href="../Pages/GamePage.html";
     } else {
         abrirPopup();
     }
@@ -101,9 +101,9 @@ async function abrirJogo() {
         porcentMina = document.getElementById("percent").value;
     }
 
-    postNovoJogo(altura, largura, porcentMina);
     fecharPopup();
-    await jogar();
+    await postNovoJogo(altura, largura, porcentMina);
+    window.location.href="../Pages/GamePage.html";
 }
 
 // edição da lista de Ranking

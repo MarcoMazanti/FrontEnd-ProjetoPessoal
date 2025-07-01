@@ -18,8 +18,8 @@
 - [X] Adicionar as Estatísticas Pessoas
 - [X] Pagina para Adicionar e Buscar Amigos
 - [X] Página para Chat com o Amigo
-- [ ] Criar a página de Jogo
-- [ ] Criar Modos de Jogos Distintos
+- [X] Criar a página de Jogo
+- [X] Criar Modos de Jogos Distintos
 
 ### Tecnologias
 - HTML
@@ -27,7 +27,7 @@
 - JavaScript
 
 ### Status
-Em andamento
+Concluído
 
 ### Link ao BackEnd
 [BackEnd-ProjetoPessoal](https://github.com/MarcoMazanti/BackEnd-ProjetoPessoal)
@@ -38,3 +38,6 @@ Em andamento
 
 ## Data de Início
 #### 2025-05-07
+
+## Data de Término
+#### 2025-06-30

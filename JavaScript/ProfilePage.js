@@ -89,11 +89,7 @@ async function salvarPerfil() {
                     novoNome,
                     novoEmail,
                     novaFotoUsuario,
-                    usuarioLogado.pontuacao,
-                    usuarioLogado.jogosParticipados,
-                    usuarioLogado.vitorias,
-                    usuarioLogado.empates,
-                    usuarioLogado.derrotas);
+                    usuarioLogado.pontuacao);
 
                 await window.location.reload();
             } else {

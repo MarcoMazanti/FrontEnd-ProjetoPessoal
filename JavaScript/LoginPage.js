@@ -77,11 +77,7 @@ document.getElementById("formLogin").addEventListener("submit", async function(e
              usuarioLogado.nome,
              usuarioLogado.email,
              usuarioLogado.imagem,
-             usuarioLogado.pontuacao,
-             usuarioLogado.jogosParticipados,
-             usuarioLogado.vitorias,
-             usuarioLogado.empates,
-             usuarioLogado.derrotas);
+             usuarioLogado.pontuacao);
          window.location.href = "../Pages/HomePage.html";
     } else {
         alert("Usuário não encontrado!");

@@ -73,9 +73,7 @@ export function postNovoJogo(altura, largura, dificuldade) {
 }
 
 export async function putFimJogo(pontuacao) {
-    const jogoAndamento = await getJogoAndamento();
-
-    fetch(`http://localhost:8080/api/jogo/${jogoAndamento.id}/${pontuacao}`, {
+    fetch(`http://localhost:8080/api/jogo/${usuarioSalvo.id}/${pontuacao}`, {
         method: 'PUT'
     })
         .then(resposta => resposta.text())
